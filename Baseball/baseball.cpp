@@ -13,5 +13,11 @@ public:
 				throw invalid_argument("Input must contain only digits.");
 			}
 		}
+
+		if (guessNumber[0] == guessNumber[1]
+			|| guessNumber[0] == guessNumber[2]
+			|| guessNumber[1] == guessNumber[2]) {
+			throw invalid_argument("Input must not contain duplicate digits.");
+		}
 	}
 };
