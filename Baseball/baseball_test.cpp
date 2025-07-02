@@ -1,6 +1,5 @@
 #include "gmock/gmock.h"
 #include "baseball.cpp"
-#include "baseball_test.h"
 
 class BaseballFixture : public ::testing::Test {
 public:
