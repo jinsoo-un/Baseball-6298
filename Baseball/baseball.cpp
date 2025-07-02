@@ -37,13 +37,27 @@ public:
 		}
 	}
 
+	void countStrikes(const std::string& guessNumber)
+	{
+		for (int i = 0; i < 3; ++i) {
+			if (guessNumber[i] == question[i]) {
+				result.strikes++;
+			}
+		}
+	}
+
 	GuessResult guess(const string& guessNumber) {
 		assertIllegalArgument(guessNumber);
 		if (guessNumber == question) {
 			return { true, 3, 0 };
 		}
-		else if (guessNumber == "126") {
-			return { false, 2, 0 };
+		else {
+			countStrikes(guessNumber);
+
+			if (result.strikes < 3) {
+				result.solved = false;
+			}
+			return result;
 		}
 
 		return { false, 0, 0 };
@@ -51,4 +65,5 @@ public:
 
 private:
 	string question;
+	GuessResult result{ false, 0, 0 };
 };
